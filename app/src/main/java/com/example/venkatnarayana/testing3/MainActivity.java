@@ -1,11 +1,13 @@
 package com.example.venkatnarayana.testing3;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
@@ -29,11 +31,14 @@ public class MainActivity extends AppCompatActivity {
     String slon;
     String elat;
     String elon;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        progressBar=(ProgressBar)findViewById(R.id.progressBar2);
+        progressBar.setVisibility(View.GONE);
 
 
         b=(Button)findViewById(R.id.button);
@@ -51,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     String l="&key=AIzaSyA0qqbmcMpmzfHoj-3tU2z5jNRV6wpMqEU";
                 final String name=text1.getText().toString();
                 final String name1=text2.getText().toString();
+                progressBar.setVisibility(View.VISIBLE);
                     String r=name;
                 String r1=name1;
                     String result = r.replace(" ","+");
@@ -124,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                new Thread(new Runnable()
+                /*new Thread(new Runnable()
                 {
                     @Override
                     public void run()
@@ -132,12 +138,14 @@ public class MainActivity extends AppCompatActivity {
                         try
                         {
                             Thread.sleep(3000);
+                            progressBar.setVisibility(View.GONE);
                             Intent myIntent = new Intent(MainActivity.this,
                                     test3.class);
                             myIntent.putExtra("slat",slat);
                             myIntent.putExtra("slon",slon);
                             myIntent.putExtra("elat",elat);
                             myIntent.putExtra("elon",elon);
+
 
                             startActivity(myIntent);
 
@@ -148,7 +156,26 @@ public class MainActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
-                }).start();
+                }).start();*/
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        //Execute code here
+                        progressBar.setVisibility(View.GONE);
+                        Intent myIntent = new Intent(MainActivity.this,
+                                test3.class);
+                        myIntent.putExtra("slat",slat);
+                        myIntent.putExtra("slon",slon);
+                        myIntent.putExtra("elat",elat);
+                        myIntent.putExtra("elon",elon);
+
+
+                        startActivity(myIntent);
+
+                    }
+                }, 5000);
 
                 }
 
