@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                     String u="https://maps.googleapis.com/maps/api/geocode/json?address=";
 
-                    String l="&key=AIzaSyA0qqbmcMpmzfHoj-3tU2z5jNRV6wpMqEU";
+                    String l="&key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";//api key from google cloud developer console
                 final String name=text1.getText().toString();
                 final String name1=text2.getText().toString();
                 progressBar.setVisibility(View.VISIBLE);
