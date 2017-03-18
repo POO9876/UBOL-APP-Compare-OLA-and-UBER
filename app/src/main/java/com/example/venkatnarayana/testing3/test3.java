@@ -1,5 +1,6 @@
 package com.example.venkatnarayana.testing3;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -54,6 +55,7 @@ public class test3 extends AppCompatActivity {
         final String slon = i.getExtras().getString("slon");
         final String elat = i.getStringExtra("elat");
         final String elon = i.getExtras().getString("elon");
+
 
 
 
@@ -207,6 +209,10 @@ public class test3 extends AppCompatActivity {
 
             }
         });
+
+
+
+
 
 
     }
