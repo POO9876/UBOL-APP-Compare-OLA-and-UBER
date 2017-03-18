@@ -118,7 +118,7 @@ public class test3 extends AppCompatActivity {
                             @Override
                             public Map<String, String> getHeaders() throws AuthFailureError {
                             HashMap<String, String> headers = new HashMap<String, String>();
-                            headers.put("Authorization", "Token IljGLHzG5QJ55NYHiVoJaE4On_46Dt-MDBdPL3Vs");
+                            headers.put("Authorization", "Token xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");//Token obtained from uber developer api
                             headers.put("Accept-Language", "en_US");
                                 headers.put("Content-Type","application/json");
                             return headers;
@@ -213,7 +213,7 @@ public class test3 extends AppCompatActivity {
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         HashMap<String, String> headers = new HashMap<String, String>();
 
-                        headers.put("X-APP-TOKEN","3eadfa510c8c4eefa98f41c5b7d59f75");
+                        headers.put("X-APP-TOKEN","xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");//Token obtained from OLA developer api
                         return headers;
 
                     }};
