@@ -1,10 +1,13 @@
 package com.example.venkatnarayana.testing3;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -21,12 +24,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class test3 extends AppCompatActivity {
-    TextView text;
-    TextView text1;
+
     TextView uber;
     TextView ola;
     Button b1;
     Button b2;
+    ProgressBar progressBar;
     private RequestQueue requestQueue;
     String ubername1;
     String uberestimate1;
@@ -59,14 +62,14 @@ public class test3 extends AppCompatActivity {
 
 
 
-        text=(TextView)findViewById(R.id.textView3);
-        text1=(TextView)findViewById(R.id.textView4);
+
+
         uber=(TextView)findViewById(R.id.textView5);
         ola=(TextView)findViewById(R.id.textView6);
         b1=(Button)findViewById(R.id.button2);
         b2=(Button)findViewById(R.id.button3);
-        text.setText(slat+","+slon);
-        text1.setText(elat+","+elon);
+        progressBar=(ProgressBar)findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
         requestQueue= Volley.newRequestQueue(this);
 
         b1.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +80,7 @@ public class test3 extends AppCompatActivity {
                 String l="&end_latitude=";
                 String k="&end_longitude=";
                 String url1=u+slat+r+slon+l+elat+k+elon;
+                progressBar.setVisibility(View.VISIBLE);
 
                 JsonObjectRequest request=new JsonObjectRequest(url1, new Response.Listener<JSONObject>() {
 
@@ -121,6 +125,7 @@ public class test3 extends AppCompatActivity {
 
                     }};
                 requestQueue.add(request);
+
                /* new Thread(new Runnable()
                 {
                     @Override
@@ -141,8 +146,19 @@ public class test3 extends AppCompatActivity {
                         }
                     }
                 }).start();*/
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
-                uber.setText(ubername1+"  "+uberestimate1+"\n"+ubername2+"  "+uberestimate2+"\n"+ubername3+" "+uberestimate3);
+                        //Execute code here
+                        progressBar.setVisibility(View.GONE);
+                        uber.setText(ubername1+"  "+uberestimate1+"\n"+ubername2+"  "+uberestimate2+"\n"+ubername3+" "+uberestimate3);
+
+                    }
+                }, 5000);
+
+
             }
         });
 
@@ -154,6 +170,7 @@ public class test3 extends AppCompatActivity {
                 String l="&drop_lat=";
                 String k="&drop_lng=";
                 String url2=u+slat+r+slon+l+elat+k+elon;
+                progressBar.setVisibility(View.VISIBLE);
                 JsonObjectRequest request1=new JsonObjectRequest(url2, new Response.Listener<JSONObject>() {
 
 
@@ -201,12 +218,29 @@ public class test3 extends AppCompatActivity {
 
                     }};
                 requestQueue.add(request1);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
-                ola.setText(olaname1+" "+olaminamount1+"-"+olamaxamount1+"\n"+olaname2+" "+olaminamount2+"-"+olamaxamount2+"\n"+olaname3+" "+olaminamount3+"-"+olamaxamount3+"\n");
+                        //Execute code here
+                        progressBar.setVisibility(View.GONE);
+                        ola.setText(olaname1+" "+olaminamount1+"-"+olamaxamount1+"\n"+olaname2+" "+olaminamount2+"-"+olamaxamount2+"\n"+olaname3+" "+olaminamount3+"-"+olamaxamount3+"\n");
+
+
+                    }
+                }, 5000);
+
+
 
 
             }
         });
+
+
+
+
+
 
 
     }
